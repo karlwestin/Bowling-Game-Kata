@@ -148,8 +148,17 @@ var RomanToArabic = TestCase("RomanToArabic", {
   testPassing84: function() {
         assertEquals(84, NumeralConverter.romanToArabic("LXXXIV"));
   },
-  testPassing45: function() {
-        assertEquals(45, NumeralConverter.romanToArabic("XLV"));
+  testPassing99: function() {
+        assertEquals(99, NumeralConverter.romanToArabic("XCIX"));
+  },
+  testPadding100: function() {
+        assertEquals(100, NumeralConverter.romanToArabic("C"));
+  },
+  testPassing495: function() {
+        assertEquals(495, NumeralConverter.romanToArabic("CDXCV"));
+  },
+  testPassing1000: function() {
+        assertEquals(1000, NumeralConverter.romanToArabic("M"));
   },
 
 });

@@ -6,42 +6,20 @@ var NumeralConverter = (function() {
     return {
       
        romanToArabic: function(roman) {
-           
-           var ones  = 0,
-               fives = 0,
-               tens  = 0,
-               fifties = 0,
-               result = 0,
-               lCount = roman.split(/L/g).length -1,
-               xCount = roman.split(/X/g).length -1,
-               vCount = roman.split(/V/g).length -1,
-               iCount = roman.split(/I/g).length -1;
-
-           if (/IV/.test(roman)) {
-              iCount += 3;
-              vCount -= 1;
+           roman = roman.toUpperCase();
+           var letters = ["M", "D", "C", "L", "X", "V", "I"],
+               values = { M: 1000, D: 500, C: 100, L: 50, X: 10, V: 5, I: 1 },
+               sum = 0;
+           for(var i=0; i<roman.length; i++) {
+                if (typeof roman[i+1]!= "undefined" && letters.indexOf(roman[i]) > letters.indexOf(roman[i+1]) ) {
+                    sum += values[roman[i+1]] - values[roman[i]];
+                    i++;
+                } else {
+                    sum += values[roman[i]];
+                }
            }
-           
-           if (/IX/.test(roman)) {
-              iCount += 8;
-              xCount -= 1;
-           }
-           if (/XL/.test(roman)) {
-              xCount += 3;
-              lCount -= 1;
-           }
+           return sum;
 
-
-           if(vCount > 0)
-              fives = vCount * 5;
-           if(xCount > 0)
-               tens = xCount * 10;
-           if(lCount > 0)
-               tens += lCount * 50;
-
-           ones = iCount;
-
-           return tens + fives + ones;
        },
         
         arabicToRoman: function(arabic) {
