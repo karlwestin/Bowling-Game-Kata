@@ -58,14 +58,9 @@ var BowlingScore = TestCase("BowlingScore", {
       sc.forEach(g.roll);
       assertEquals(135, g.score());
     },
-    testRandom4: function() {
-      var sc = [10,10,10,6,0,10,6,3,7,0,6,1,10,6,7];
-      sc.forEach(g.roll);
-      assertEquals(236, g.score()); // gives 156
-    },
     testRandom5: function() {
       var sc = [10,8,2,5,5,7,3,10,10,7,1,10,10,10,10,8];
       sc.forEach(g.roll);
-      assertEquals(263, g.score()); // gives 213
+      assertEquals(213, g.score());
     }
 });
